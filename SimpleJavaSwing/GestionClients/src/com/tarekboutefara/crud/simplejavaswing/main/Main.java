@@ -55,7 +55,7 @@ public class Main {
         p.setProperty("user", "");
         p.setProperty("password", "");
         
-        p.storeToXML(new FileOutputStream(new File("CONFIG_FILE")), 
+        p.storeToXML(new FileOutputStream(new File(CONFIG_FILE)), 
                 "Configuration par défaut");
         return p;
     }
