@@ -5,6 +5,7 @@
  */
 package com.tarekboutefara.crud.simplejavaswing.main;
 
+import com.tarekboutefara.crud.simplejavaswing.gui.MainFrame;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -43,7 +44,7 @@ public class Main {
             }
         }
         
-        
+        (new MainFrame()).setVisible(true);
     }
     
     public static Properties saveDefaultValues() throws IOException{
@@ -57,6 +58,10 @@ public class Main {
         p.storeToXML(new FileOutputStream(new File("CONFIG_FILE")), 
                 "Configuration par défaut");
         return p;
+    }
+
+    public static void exit() {
+        System.exit(0);
     }
     
 }
