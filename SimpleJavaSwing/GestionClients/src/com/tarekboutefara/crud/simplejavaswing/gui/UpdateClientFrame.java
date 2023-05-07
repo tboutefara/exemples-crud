@@ -23,6 +23,7 @@ public class UpdateClientFrame extends javax.swing.JFrame {
      */
     public UpdateClientFrame(Client c) {
         initComponents();
+        this.setLocationRelativeTo(null);
         
         this.client = c;
         displayClientInfos();

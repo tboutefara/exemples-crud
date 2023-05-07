@@ -44,7 +44,7 @@ public class DAOClient {
     
     public static boolean updateClient(Client c) throws SQLException{
         
-        String query = "Update Client Values set "
+        String query = "Update Client set "
                 + "nom = ?, "
                 + "prenom = ?,"
                 + "nTel = ?,"

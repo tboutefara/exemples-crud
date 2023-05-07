@@ -6,6 +6,7 @@
 package com.tarekboutefara.crud.simplejavaswing.gui;
 
 import com.tarekboutefara.crud.simplejavaswing.main.Main;
+import com.tarekboutefara.crud.simplejavaswing.model.Client;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -20,7 +21,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
-        
+
         setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
     }
 
@@ -70,10 +71,20 @@ public class MainFrame extends javax.swing.JFrame {
         clientMenu.add(newClientMenuItem);
 
         allClientsMenuItem.setText("Tous les Clients");
+        allClientsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                allClientsMenuItemActionPerformed(evt);
+            }
+        });
         clientMenu.add(allClientsMenuItem);
         clientMenu.add(jSeparator1);
 
-        quickSearchMenuItem.setText("Recherche rapide");
+        quickSearchMenuItem.setText("Recherche rapide (par Code)");
+        quickSearchMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quickSearchMenuItemActionPerformed(evt);
+            }
+        });
         clientMenu.add(quickSearchMenuItem);
 
         menuBar.add(clientMenu);
@@ -111,15 +122,54 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
-        JOptionPane.showMessageDialog(null, 
-                "Gestion des Client, exemple CRUD, v 0.0.1", 
-                "A Propos", 
+        JOptionPane.showMessageDialog(null,
+                "Gestion des Client, exemple CRUD, v 0.0.1",
+                "A Propos",
                 JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     private void newClientMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClientMenuItemActionPerformed
         (new NewClientFrame()).setVisible(true);
     }//GEN-LAST:event_newClientMenuItemActionPerformed
+
+    private void allClientsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allClientsMenuItemActionPerformed
+        (new ClientListFrame()).setVisible(true);
+    }//GEN-LAST:event_allClientsMenuItemActionPerformed
+
+    private void quickSearchMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quickSearchMenuItemActionPerformed
+        String s = (String) JOptionPane.showInputDialog(
+                null,
+                "Code Client :",
+                "recherche par Code",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                null,
+                "1");
+        System.out.println(s);
+        
+        if (s != null) {
+            try {
+                int code = Integer.parseInt(s);
+                
+                Client c = Main.SearchById(code);
+                if(c == null){
+                    JOptionPane.showMessageDialog(null,
+                        "Aucun client ne porte le code donné.",
+                        "Code incorrect",
+                        JOptionPane.ERROR_MESSAGE);
+                }else{
+                    (new UpdateClientFrame(c)).setVisible(true);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,
+                        "Le code doit être un nombre",
+                        "Code incorrect",
+                        JOptionPane.ERROR_MESSAGE);
+                
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_quickSearchMenuItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;

@@ -13,6 +13,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -99,6 +101,47 @@ public class Main {
             Logger.getLogger("Main").log(Level.SEVERE, null, ex);
             return DATABASE_ERROR;
         }
+    }
+
+    public static List<Client> getAllClients() {
+        try {
+            return DAOClient.allClients();
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public static List<Client> searchByIdAsList(int id) {
+        List<Client> list = new ArrayList<>();
+        try {
+            
+            Client c = DAOClient.getById(id);
+            if(c != null)
+                list.add(c);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public static List<Client> searchByName(String name) {
+        try {
+            return DAOClient.getByName(name);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public static Client SearchById(int id) {
+        Client c = null;
+        try {
+            c = DAOClient.getById(id);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return c;
     }
 
     

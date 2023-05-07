@@ -20,6 +20,7 @@ public class NewClientFrame extends javax.swing.JFrame {
      */
     public NewClientFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
