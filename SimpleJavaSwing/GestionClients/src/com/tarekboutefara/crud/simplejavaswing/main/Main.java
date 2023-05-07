@@ -1,7 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * Copyright 2023 Tarek Boutefara <t_boutefara@esi.dz>.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.tarekboutefara.crud.simplejavaswing.main;
 
@@ -20,20 +30,46 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * The Main class and the main controller for this application.
+ * Given the size of this application, there was no need to create a
+ * separate controller. This class ensure the orchestration between
+ * the View classes (JFrames) and the database interrogations (DAOClient).
  * @author Tarek Boutefara <t_boutefara@esi.dz>
  */
 public class Main {
     
+    /**
+     * The default configuration file.
+     */
     public final static String CONFIG_FILE = "config.xml";
+    
+    /**
+     * The default configuration object.
+     */
     public static Properties CONFIG = new Properties();
     
+    /**
+     * Response message : OK.
+     * Returned if the database interrogation was successful.
+     */
     public static final int OK = 0;
+    
+    /**
+     * Error message : DATABASE ERROR.
+     * Returned of the database interrogation failed.
+     */
     public static final int DATABASE_ERROR = 1;
+    
+    /**
+     * Error message : MISSING DATA.
+     * Returned of the data introduced by the user are incomplete
+     * (some required data are missing).
+     */
     public static final int MISSING_DATA = 2;
 
     /**
-     * @param args the command line arguments
+     * The app launcher.
+     * @param args the command line arguments (no arguments are required).
      */
     public static void main(String[] args) {
         
@@ -53,6 +89,11 @@ public class Main {
         (new MainFrame()).setVisible(true);
     }
     
+    /**
+     * This methods creates the default configuration.
+     * @return A Properties object with default values.
+     * @throws IOException 
+     */
     public static Properties saveDefaultValues() throws IOException{
         Properties p = new Properties();
         
@@ -66,11 +107,19 @@ public class Main {
         return p;
     }
 
+    /**
+     * Exit the application.
+     */
     public static void exit() {
         Logger.getLogger("Main").info("Closing app");
         System.exit(0);
     }
 
+    /**
+     * The conroller method to save a new Client. 
+     * @param c The client to save.
+     * @return The resulting code.
+     */
     public static int saveClient(Client c) {
         if(c.getFirstName().equals("") || c.getLastName().equals(""))
             return MISSING_DATA;
@@ -87,6 +136,11 @@ public class Main {
         }
     }
 
+    /**
+     * The conroller method to update an existing Client.
+     * @param c The Client to update.
+     * @return The resulting code.
+     */
     public static int updateClient(Client c) {
         if(c.getFirstName().equals("") || c.getLastName().equals(""))
             return MISSING_DATA;
@@ -103,6 +157,10 @@ public class Main {
         }
     }
 
+    /**
+     * The conroller method to retreive all Clients.
+     * @return The list of all Clients.
+     */
     public static List<Client> getAllClients() {
         try {
             return DAOClient.allClients();
@@ -112,6 +170,12 @@ public class Main {
         return null;
     }
 
+    /**
+     * The conroller method to retreive a Client by "id".
+     * The Client will be wrapped in a list.
+     * @param id The id of the Client to retreive.
+     * @return A list that contains a unique Client if found.
+     */
     public static List<Client> searchByIdAsList(int id) {
         List<Client> list = new ArrayList<>();
         try {
@@ -125,6 +189,11 @@ public class Main {
         return list;
     }
 
+    /**
+     * The conroller method to retreive Clients with  "name" in their first or last name.
+     * @param name The name to search with.
+     * @return A list of Clients that respect the search criteria.
+     */
     public static List<Client> searchByName(String name) {
         try {
             return DAOClient.getByName(name);
@@ -134,6 +203,12 @@ public class Main {
         return null;
     }
 
+    /**
+     * The conroller method to retreive a Client by "id".
+     * The Client will be returned as an object..
+     * @param id The id of the Client to retreive.
+     * @return A Client if found.
+     */
     public static Client SearchById(int id) {
         Client c = null;
         try {
@@ -143,6 +218,5 @@ public class Main {
         }
         return c;
     }
-
     
 }
