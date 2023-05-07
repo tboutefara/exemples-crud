@@ -79,6 +79,8 @@ public class Main {
             CONFIG.loadFromXML(new FileInputStream(new File(CONFIG_FILE)));
         } catch (IOException ex) {
             try {
+                Logger.getLogger("Main").info("La configuration par défaut "
+                        + "n'a pas pu être récupérée, elle va être créée");
                 CONFIG = saveDefaultValues();
             } catch (IOException ex1) {
                 Logger.getLogger("Main").info("La configuration n'a pas pu être créée");
@@ -121,6 +123,7 @@ public class Main {
      * @return The resulting code.
      */
     public static int saveClient(Client c) {
+        Logger.getLogger("Main").info("Saving Client");
         if(c.getFirstName().equals("") || c.getLastName().equals(""))
             return MISSING_DATA;
         
@@ -142,6 +145,7 @@ public class Main {
      * @return The resulting code.
      */
     public static int updateClient(Client c) {
+        Logger.getLogger("Main").log(Level.INFO, "Updating client (id = {0})", c.getId());
         if(c.getFirstName().equals("") || c.getLastName().equals(""))
             return MISSING_DATA;
         
@@ -162,6 +166,7 @@ public class Main {
      * @return The list of all Clients.
      */
     public static List<Client> getAllClients() {
+        Logger.getLogger("Main").info("Retreiving all Clients.");
         try {
             return DAOClient.allClients();
         } catch (SQLException ex) {
@@ -177,6 +182,7 @@ public class Main {
      * @return A list that contains a unique Client if found.
      */
     public static List<Client> searchByIdAsList(int id) {
+        Logger.getLogger("Main").log(Level.INFO, "Seraching client (id = {0})", id);
         List<Client> list = new ArrayList<>();
         try {
             
@@ -195,6 +201,7 @@ public class Main {
      * @return A list of Clients that respect the search criteria.
      */
     public static List<Client> searchByName(String name) {
+        Logger.getLogger("Main").log(Level.INFO, "Seraching client (name = {0})", name);
         try {
             return DAOClient.getByName(name);
         } catch (SQLException ex) {
@@ -210,6 +217,7 @@ public class Main {
      * @return A Client if found.
      */
     public static Client SearchById(int id) {
+        Logger.getLogger("Main").log(Level.INFO, "Seraching client (id = {0})", id);
         Client c = null;
         try {
             c = DAOClient.getById(id);
