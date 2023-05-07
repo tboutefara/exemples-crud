@@ -5,14 +5,14 @@
  */
 package com.tarekboutefara.crud.simplejavaswing.main;
 
+import com.tarekboutefara.crud.simplejavaswing.database.DAOClient;
 import com.tarekboutefara.crud.simplejavaswing.gui.MainFrame;
+import com.tarekboutefara.crud.simplejavaswing.model.Client;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,12 +26,16 @@ public class Main {
     public final static String CONFIG_FILE = "config.xml";
     public static Properties CONFIG = new Properties();
     
-    
+    public static final int OK = 0;
+    public static final int DATABASE_ERROR = 1;
+    public static final int MISSING_DATA = 2;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        Logger.getLogger("Main").info("Starting...");
       
         try {
             CONFIG.loadFromXML(new FileInputStream(new File(CONFIG_FILE)));
@@ -39,7 +43,7 @@ public class Main {
             try {
                 CONFIG = saveDefaultValues();
             } catch (IOException ex1) {
-                System.out.println("La configuration n'a pas pu être créée");
+                Logger.getLogger("Main").info("La configuration n'a pas pu être créée");
                 System.exit(0);
             }
         }
@@ -61,7 +65,41 @@ public class Main {
     }
 
     public static void exit() {
+        Logger.getLogger("Main").info("Closing app");
         System.exit(0);
     }
+
+    public static int saveClient(Client c) {
+        if(c.getFirstName().equals("") || c.getLastName().equals(""))
+            return MISSING_DATA;
+        
+        try {
+            if(DAOClient.saveClient(c))
+                return OK;
+            else
+                return DATABASE_ERROR;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger("Main").log(Level.SEVERE, null, ex);
+            return DATABASE_ERROR;
+        }
+    }
+
+    public static int updateClient(Client c) {
+        if(c.getFirstName().equals("") || c.getLastName().equals(""))
+            return MISSING_DATA;
+        
+        try {
+            if(DAOClient.updateClient(c))
+                return OK;
+            else
+                return DATABASE_ERROR;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger("Main").log(Level.SEVERE, null, ex);
+            return DATABASE_ERROR;
+        }
+    }
+
     
 }

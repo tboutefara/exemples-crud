@@ -7,6 +7,7 @@ package com.tarekboutefara.crud.simplejavaswing.gui;
 
 import com.tarekboutefara.crud.simplejavaswing.main.Main;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -61,6 +62,11 @@ public class MainFrame extends javax.swing.JFrame {
         clientMenu.setText("Clients");
 
         newClientMenuItem.setText("Nouveau Client");
+        newClientMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newClientMenuItemActionPerformed(evt);
+            }
+        });
         clientMenu.add(newClientMenuItem);
 
         allClientsMenuItem.setText("Tous les Clients");
@@ -75,6 +81,11 @@ public class MainFrame extends javax.swing.JFrame {
         helpMenu.setText("Aide");
 
         aboutMenuItem.setText("A Propos");
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(aboutMenuItem);
 
         menuBar.add(helpMenu);
@@ -98,6 +109,17 @@ public class MainFrame extends javax.swing.JFrame {
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         Main.exit();
     }//GEN-LAST:event_exitMenuItemActionPerformed
+
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        JOptionPane.showMessageDialog(null, 
+                "Gestion des Client, exemple CRUD, v 0.0.1", 
+                "A Propos", 
+                JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
+
+    private void newClientMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClientMenuItemActionPerformed
+        (new NewClientFrame()).setVisible(true);
+    }//GEN-LAST:event_newClientMenuItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
