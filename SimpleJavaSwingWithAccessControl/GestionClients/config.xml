@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Configuration par défaut</comment>
+<entry key="user"/>
+<entry key="password"/>
+<entry key="driver"/>
+<entry key="connection_url">jdbc:sqlite:bdd.db</entry>
+</properties>
