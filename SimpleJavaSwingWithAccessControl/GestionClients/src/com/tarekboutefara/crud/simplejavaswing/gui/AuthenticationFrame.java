@@ -1,7 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * Copyright 2023 Tarek Boutefara <t_boutefara@esi.dz>.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.tarekboutefara.crud.simplejavaswing.gui;
 
@@ -9,13 +19,24 @@ import com.tarekboutefara.crud.simplejavaswing.main.Main;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * This frame allows the user authentication.
+ * If the main database script is run without modifications, three users are
+ * available:
+ * 
+ * <ul>
+ * <li><strong>admin</strong> : with admin access, he can access all data.</li>
+ * <li><strong>user1</strong> : with user access, he can access data he created.</li>
+ * <li><strong>user2</strong> : with user access, he can access data he created.</li>
+ * </ul>
+ * 
+ * The default password for the three users is '123456'.
+ * 
  * @author Tarek Boutefara <t_boutefara@esi.dz>
  */
 public class AuthenticationFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form AuthenticationFrame
+     * Creates the Authentication Frame
      */
     public AuthenticationFrame() {
         initComponents();
@@ -102,7 +123,7 @@ public class AuthenticationFrame extends javax.swing.JFrame {
             dispose();
         } else {
             JOptionPane.showMessageDialog(null,
-                    "ENom utilisateur ou mot de passe incorrect",
+                    "Nom utilisateur ou mot de passe incorrect",
                     "L'authentification a échoué",
                     JOptionPane.ERROR_MESSAGE);
         }

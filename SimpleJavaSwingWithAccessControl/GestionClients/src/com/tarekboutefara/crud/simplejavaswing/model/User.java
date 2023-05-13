@@ -6,7 +6,7 @@
 package com.tarekboutefara.crud.simplejavaswing.model;
 
 /**
- *
+ * The User POJO (Java Bean).
  * @author Tarek Boutefara <t_boutefara@esi.dz>
  */
 public class User {

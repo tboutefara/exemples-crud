@@ -70,8 +70,16 @@ public class Main {
      */
     public static final int MISSING_DATA = 2;
     
+    /** 
+     * Error message : CREDENTIELS are INCORRECT.
+     * Returned if the given username and password do not correpond to any user
+     * in the database.
+     */
     public static final int CREDENTIELS_INCORRECT = 3;
     
+    /**
+     * The currently autenticated User.
+     */
     private static User user;
 
     /**
@@ -246,6 +254,12 @@ public class Main {
         return c;
     }
 
+    /**
+     * Checks the database to attemp a username and password-based authentication
+     * @param username The user's username.
+     * @param password The user's passwod
+     * @return The corresponding code.
+     */
     public static int connect(String username, String password) {
         try {
             User u = DAOUser.authenticate(username, password);
@@ -262,6 +276,11 @@ public class Main {
         }
     }
     
+    /**
+     * Allows access to the current user.
+     * The current user is implemented as a private singleton.
+     * @return The current User.
+     */
     public static User getCurrentUser(){
         return user;
     }

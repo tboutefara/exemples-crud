@@ -16,7 +16,7 @@
 package com.tarekboutefara.crud.simplejavaswing.model;
 
 /**
- *
+ * The Client POJO (Java Bean).
  * @author Tarek Boutefara <t_boutefara@esi.dz>
  */
 public class Client {
