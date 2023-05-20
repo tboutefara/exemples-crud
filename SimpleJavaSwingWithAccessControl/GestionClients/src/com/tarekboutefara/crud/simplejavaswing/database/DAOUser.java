@@ -30,7 +30,7 @@ import java.sql.SQLException;
 public class DAOUser {
     
     /**
-     * Authenticate a user give his useername and password.
+     * Authenticate a user given his useername and password.
      * @param username The user's username.
      * @param password The user's password.
      * @return The authenticated user, null if no user with the specified username and password if found.
