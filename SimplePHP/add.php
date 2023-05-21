@@ -19,7 +19,7 @@ limitations under the License.
         <meta charset="UTF-8">
         <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
-        <title></title>
+        <title>Ajouter un nouveau Client</title>
     </head>
     <body class="container">
         <form action="/app/control/addcontroller.php" method="post">

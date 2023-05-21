@@ -30,7 +30,7 @@ if (isset($_POST["id"])) {
         <meta charset="UTF-8">
         <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
-        <title></title>
+        <title>Gestion des Clients</title>
     </head>
     <body class="container">
         <div class="row">
