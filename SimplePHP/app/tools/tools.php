@@ -19,6 +19,6 @@
 function updateForm($id) {
     return "<form action='update.php' method='post'>"
             . "<input type='hidden' name='id' value='$id' />"
-            . "<input type='submit' value='Modifier' />"
+            . "<input type='submit' class='btn btn-danger' value='Modifier' />"
             . "</form>";
 }

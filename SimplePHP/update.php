@@ -18,29 +18,44 @@ limitations under the License.
 include('loader.php');
 $client = NULL;
 
-if(isset($_POST["id"])){
+if (isset($_POST["id"])) {
     $client = DAOClient::getClientById($_POST["id"]);
 }
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
+        <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
         <title></title>
     </head>
-    <body>
+    <body class="container">
         <?php
-        if($client != NULL){
-        ?>
-        <form action="/app/control/updatecontroller.php" method="post">
-            Last Name : <input type="text" name="last_name" value="<?= $client->last_name ?>"/><br/>
-            First Name : <input type="text" name="first_name" value="<?= $client->first_name ?>"/><br/>
-            Phone Number : <input type="text" name="phone_number" value="<?= $client->phone_number ?>"/><br/>
-            Adresse : <input type="text" name="adresse" value="<?= $client->adresse ?>"/><br/>
-            Adresse : <input type="hidden" name="id" value="<?= $client->id ?>"/><br/>
-            <input type="submit" name="submit" value="Mettre à jour Client"/><br/>
-        </form>
-        <?php
-        }else{
+        if ($client != NULL) {
+            ?>
+            <form action="/app/control/updatecontroller.php" method="post">
+                <div class="input-group row">
+                    <div class="m-1">Last Name :
+                        <input type="text" class="form-control" name="last_name" value="<?= $client->last_name ?>"/>
+                    </div>
+                    <div class="m-1">First Name :
+                        <input type="text" class="form-control" name="first_name" value="<?= $client->first_name ?>"/>
+                    </div>
+                    <div class="m-1">Phone Number :
+                        <input type="text" class="form-control" name="phone_number" value="<?= $client->phone_number ?>"/>
+                    </div>
+
+                    <div class="m-1">Adresse : 
+                        <input type="text" class="form-control" name="adresse" value="<?= $client->adresse ?>"/>
+                    </div>
+                    <input type="hidden" name="id" value="<?= $client->id ?>"/>
+                    <div class="m-1">
+                        <input type="submit" class="btn btn-primary w-100" name="submit" value="Mettre à jour Client"/>
+                    </div>
+                </div>
+            </form>
+            <?php
+        } else {
             echo 'Requete incorrect! <br/> <a href="index.php">Accueil</a>';
         }
         ?>

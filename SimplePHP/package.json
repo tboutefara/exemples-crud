@@ -1,0 +1,21 @@
+{
+  "name": "simplephp",
+  "version": "1.0.0",
+  "description": "CRUD example using PHP",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "CRUD",
+    "Create",
+    "Update",
+    "Retreive",
+    "Delete"
+  ],
+  "author": "Tarek Boutefara",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "5.2.3"
+  }
+}
