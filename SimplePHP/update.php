@@ -34,23 +34,25 @@ if (isset($_POST["id"])) {
         if ($client != NULL) {
             ?>
             <form action="/app/control/updatecontroller.php" method="post">
-                <div class="input-group row">
-                    <div class="m-1">Last Name :
-                        <input type="text" class="form-control" name="last_name" value="<?= $client->last_name ?>"/>
-                    </div>
-                    <div class="m-1">First Name :
-                        <input type="text" class="form-control" name="first_name" value="<?= $client->first_name ?>"/>
-                    </div>
-                    <div class="m-1">Phone Number :
-                        <input type="text" class="form-control" name="phone_number" value="<?= $client->phone_number ?>"/>
-                    </div>
+                <div class="row">
+                    <div class="input-group offset-3">
+                        <div class="col-6 m-1">Last Name :
+                            <input type="text" class="form-control" name="last_name" value="<?= $client->last_name ?>"/>
+                        </div>
+                        <div class="col-6 m-1">First Name :
+                            <input type="text" class="form-control" name="first_name" value="<?= $client->first_name ?>"/>
+                        </div>
+                        <div class="col-6 m-1">Phone Number :
+                            <input type="text" class="form-control" name="phone_number" value="<?= $client->phone_number ?>"/>
+                        </div>
 
-                    <div class="m-1">Adresse : 
-                        <input type="text" class="form-control" name="adresse" value="<?= $client->adresse ?>"/>
-                    </div>
-                    <input type="hidden" name="id" value="<?= $client->id ?>"/>
-                    <div class="m-1">
-                        <input type="submit" class="btn btn-primary w-100" name="submit" value="Mettre à jour Client"/>
+                        <div class="col-6 m-1">Adresse : 
+                            <input type="text" class="form-control" name="adresse" value="<?= $client->adresse ?>"/>
+                        </div>
+                        <input type="hidden" name="id" value="<?= $client->id ?>"/>
+                        <div class="col-6 m-1">
+                            <input type="submit" class="btn btn-primary w-100" name="submit" value="Mettre à jour Client"/>
+                        </div>
                     </div>
                 </div>
             </form>

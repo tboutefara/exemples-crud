@@ -43,16 +43,16 @@ if (isset($_POST["id"])) {
         </div>
         <div class="row">
             <form action="index.php" method="post">
-            <div class="input-group cols-12">
-                <input type="text" class="form-control w-50 m-1" name="id" />
+            <div class="input-group col-12">
+                <input type="text" class="form-control m-1" name="id" />
                 <input type="submit" class="btn btn-primary w-25 m-1" value="Recherche par Id"/>
             </div>
             </form>
         </div>
         <div class="row">
             <form action="index.php" method="post">
-            <div class="input-group cols-12">
-                <input type="text" class="form-control w-50 m-1" name="name" />
+            <div class="input-group col-12">
+                <input type="text" class="form-control m-1" name="name" />
                 <input type="submit" class="btn btn-primary w-25 m-1" value="Recherche par Nom"/>
             </div>
             </form>

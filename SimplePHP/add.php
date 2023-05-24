@@ -23,22 +23,23 @@ limitations under the License.
     </head>
     <body class="container">
         <form action="/app/control/addcontroller.php" method="post">
-            <div class="input-group row">
-                <div class="m-1">Last Name :
-                    <input type="text" class="form-control" name="last_name" />
-                </div>
-                <div class="m-1">First Name :
-                    <input type="text" class="form-control" name="first_name" />
-                </div>
-                <div class="m-1">Phone Number :
-                    <input type="text" class="form-control" name="phone_number" />
-                </div>
-
-                <div class="m-1">Adresse : 
-                    <input type="text" class="form-control" name="adresse" />
-                </div>
-                <div class="m-1">
-                    <input type="submit" class="btn btn-primary w-100" name="submit" value="Ajouter Client"/>
+            <div class="row">
+                <div class="input-group offset-3">
+                    <div class="col-6 m-1">Last Name :
+                        <input type="text" class="form-control" name="last_name" />
+                    </div>
+                    <div class="col-6 m-1">First Name :
+                        <input type="text" class="form-control" name="first_name" />
+                    </div>
+                    <div class="col-6 m-1">Phone Number :
+                        <input type="text" class="form-control" name="phone_number" />
+                    </div>
+                    <div class="col-6 m-1">Adresse : 
+                        <input type="text" class="form-control" name="adresse" />
+                    </div>
+                    <div class="col-6 m-1">
+                        <input type="submit" class="btn btn-primary w-100" name="submit" value="Ajouter Client"/>
+                    </div>
                 </div>
             </div>
         </form>
